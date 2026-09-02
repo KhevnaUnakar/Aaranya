@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-alabaster text-ink font-body antialiased;
+}
+
+::selection {
+  @apply bg-gold-200 text-ink;
+}
+
+.eyebrow {
+  @apply font-body text-xs font-semibold uppercase tracking-[0.22em] text-moss-600;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-12;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-alabaster transition duration-300 hover:bg-moss-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-500;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/20 bg-transparent px-7 py-3.5 text-sm font-semibold text-ink transition duration-300 hover:border-ink hover:bg-ink hover:text-alabaster focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-moss-500;
+}
+
+.card-surface {
+  @apply rounded-2xl border border-ink/[0.06] bg-white/70 shadow-card backdrop-blur-sm;
+}
+
+/* Lightweight CSS-only parallax layers, driven by --parallax-x/--parallax-y
+   custom properties set from usePointerParallax. Using two opposing
+   utilities on different elements creates a subtle sense of depth without
+   any animation library. */
+.parallax-layer {
+  transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0);
+  transition: transform 0.35s ease-out;
+  will-change: transform;
+}
+
+.parallax-layer-reverse {
+  transform: translate3d(calc(var(--parallax-x, 0px) * -1), calc(var(--parallax-y, 0px) * -1), 0);
+  transition: transform 0.35s ease-out;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
